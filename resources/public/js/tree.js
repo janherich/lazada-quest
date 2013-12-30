@@ -1,6 +1,13 @@
-var m = [20, 120, 20, 320],
-w = 1480 - m[1] - m[3],
-h = 800 - m[0] - m[2],
+var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth,
+    y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+
+var m = [20, 120, 20, 200],
+w = x - m[1] - m[3],
+h = y - m[0] - m[2],
 i = 0,
 root,
 vis;
