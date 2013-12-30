@@ -114,7 +114,7 @@
       tree)))
 
 (defn create-category-tree
-  "Given site and priority ordering keywords, create category tree for 
+  "Given site and priority ordering keywords, create category tree for
    maximum of top n products in each category"
   [site-key priority-key max-products]
   (let [{site-root-url-part :url
@@ -124,7 +124,6 @@
     {:name (str site-root-name " - " priority-name)
      :children (into [] (pmap (fn [category-url-part]
                                 (let [products-site-dom (fetch-url (construct-url-string site-root-url-part
-                                                                                         priority-url-part
                                                                                          category-url-part))]
                                   {:name (get-category-title products-site-dom)
                                    :children (create-tree-recursive 1 site-root-url-part
