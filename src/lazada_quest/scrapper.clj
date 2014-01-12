@@ -70,10 +70,10 @@
                                                               :li.unit]))]
     (into [] (pmap (fn [unit-dom]
                      {:name (process-first-node-text (html/select unit-dom [:em.itm-title])
-                                                      (fn [name-str]
-                                                        (-> name-str
-                                                            (string/replace #"\n" "")
-                                                            (string/trim))))
+                                                     (fn [name-str]
+                                                       (-> name-str
+                                                           (string/replace #"\n" "")
+                                                           (string/trim))))
                       :price (process-first-node-text (html/select unit-dom [#{:div.itm-price
                                                                                :div.itm-price.special}])
                                                       read-number)})
@@ -119,8 +119,8 @@
   [site-key priority-key max-products]
   (let [{site-root-url-part :url
          site-root-name :name}  (site-key site-root-url-parts)
-        {priority-url-part :url
-         priority-name :name} (priority-key priority-url-parts)]
+         {priority-url-part :url
+          priority-name :name} (priority-key priority-url-parts)]
     {:name (str site-root-name " - " priority-name)
      :children (into [] (pmap (fn [category-url-part]
                                 (let [products-site-dom (fetch-url (construct-url-string site-root-url-part
