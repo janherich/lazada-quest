@@ -24,7 +24,7 @@
   "If category tree file exists in filesystem, do nothing, otherwise
    scrape lazada website and save the generated category tree into file"
   [site-key priority-key]
-  (when (not (.exists (clojure.java.io/as-file FILE_NAME)))
+  (when-not (.exists (clojure.java.io/as-file FILE_NAME))
     (-> (scrapper/create-category-tree site-key priority-key MAX_PRODUCTS)
         (save-to-file))))
 
